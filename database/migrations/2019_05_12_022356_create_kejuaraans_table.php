@@ -14,15 +14,15 @@ class CreateKejuaraansTable extends Migration
     public function up()
     {
         Schema::create('kejuaraans', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('judul');
-            $table->string('kategori');
-            $table->string('kabupaten');
-            $table->string('provinsi');
-            $table->string('hadiah')->nullable();
-            $table->date('batas_pendaftaran')->nullable();
-            $table->string('hasil_pertandingan')->nullable();
-            $table->timestamps();
+          $table->bigIncrements('id');
+          $table->string('judul');
+          $table->string('kategori');
+          $table->string('kabupaten');
+          $table->string('provinsi');
+          $table->string('hadiah')->nullable();
+          $table->date('batas_pendaftaran')->nullable();
+          $table->string('hasil_pertandingan')->nullable();
+          $table->timestamps();
         });
     }
 

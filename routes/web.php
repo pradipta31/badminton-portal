@@ -29,7 +29,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::post('berita/tambah-berita', 'BeritaController@simpanBerita');
   Route::get('berita/data-berita', 'BeritaController@indexBerita');
   Route::get('berita/{id_berita}/edit-berita', 'BeritaController@editBerita');
-  Route::put('berita/{id_berita/edit-berita}', 'BeritaController@updateBerita');
+  Route::put('berita/{id_berita}/edit-berita', 'BeritaController@updateBerita');
+  Route::delete('berita/{id_berita}', 'BeritaController@deleteBerita');
 
   // Other Routing can create here
 });

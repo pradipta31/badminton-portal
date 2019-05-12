@@ -15,6 +15,19 @@
   </ol>
 </section>
 <section class="content">
+  @if (Session::has('success'))
+      <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Information !</h4>
+          {{Session::get('success')}}
+      </div>
+  @elseif (Session::has('error'))
+      <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-ban"></i> Information !</h4>
+          {{Session::get('error')}}
+      </div>
+  @endif
   <div class="row">
     <div class="col-xs-12">
       <div class="box">
@@ -22,55 +35,63 @@
           <h3 class="box-title">Data Berita</h3>
         </div>
         <div class="box-body">
-          <table id="tabelBerita" class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Admin</th>
-                <th>Judul</th>
-                <th>Cover</th>
-                <th>Status</th>
-                <th>Tanggal</th>
-                <th>Opsi</th>
-              </tr>
-            </thead>
-            <tbody>
-              @php
-                $no = 1;
-              @endphp
-              @foreach($beritas as $berita)
+          <a href="{{url('admin/berita/tambah-berita')}}" class="btn btn-primary btn-md" style="margin-bottom: 5px">
+            <i class="fa fa-plus"></i>
+            Tambah Berita Baru
+          </a>
+          <div class="table-responsive">
+            <table id="tabelBerita" class="table table-bordered table-striped">
+              <thead>
                 <tr>
-                  <td>{{$no++}}</td>
-                  <td>{{$berita->user->nama}}</td>
-                  <td>{{$berita->judul}}</td>
-                  <td>
-                    <button class="btn btn-primary btn-sm" onClick="showImage('{{$berita->gambar}}');">
-                      <i class="fa fa-eye"></i>
-                    </button>
-                  </td>
-                  <td>
-                    @if($berita->status == 'published')
-                      <span class="label label-success">Published</span>
-                    @else
-                      <span class="label label-warning">Archived</span>
-                    @endif
-                  </td>
-                  <td>{{$berita->created_at->format('d-m-Y')}}</td>
-                  <td>
-                    <a href="#" class="fa fa-eye"></a>
-                    <a href="{{url('admin/berita/'.$berita->id.'/edit-berita')}}" class="fa fa-pencil"></a>
-                    <a href="#" class="fa fa-trash"></a>
-                  </td>
+                  <th>No</th>
+                  <th>Admin</th>
+                  <th>Judul</th>
+                  <th>Cover</th>
+                  <th>Status</th>
+                  <th>Tanggal</th>
+                  <th>Opsi</th>
                 </tr>
-              @endforeach
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                @php
+                  $no = 1;
+                @endphp
+                @foreach($beritas as $berita)
+                  <tr>
+                    <td>{{$no++}}</td>
+                    <td>{{$berita->user->nama}}</td>
+                    <td>{{$berita->judul}}</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm" onClick="showImage('{{$berita->gambar}}');">
+                        <i class="fa fa-eye"></i>
+                      </button>
+                    </td>
+                    <td>
+                      @if($berita->status == 'published')
+                        <span class="label label-success">Published</span>
+                      @else
+                        <span class="label label-warning">Archived</span>
+                      @endif
+                    </td>
+                    <td>{{$berita->created_at->format('d-m-Y')}}</td>
+                    <td>
+                      <a href="{{url('admin/berita/'.$berita->id.'/edit-berita')}}" class="fa fa-pencil"></a>
+                      <a href="javascript:void(0);" class="fa fa-trash" onclick="deleteBerita('{{$berita->id}}')"></a>
+                    </td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
         </div>
-        <!-- /.box-body -->
       </div>
     </div>
   </div>
 </section>
+<form class="hidden" action="" method="post" id="formDelete">
+    {{ csrf_field() }}
+    <input type="hidden" name="_method" value="delete">
+</form>
 @endsection
 @section('js')
   <script src="{{asset('backend/plugins/bootbox/bootbox.min.js')}}"></script>
@@ -83,6 +104,14 @@
         closeButton: true,
         size: 'small'
       });
+    }
+    function deleteBerita(id_berita){
+        bootbox.confirm("Anda yakin ingin menghapus berita ini secara permanen ?", function(result){
+            if (result) {
+                $('#formDelete').attr('action', '{{url('admin/berita')}}/'+id_berita);
+                $('#formDelete').submit();
+            }
+        });
     }
     $(function(){
       $('#tabelBerita').dataTable()

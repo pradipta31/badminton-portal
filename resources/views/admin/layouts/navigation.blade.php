@@ -72,6 +72,19 @@
       </li>
       <li class="treeview">
         <a href="#">
+          <i class="fa fa-users"></i>
+          <span>Atlet</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{url('admin/tambah-atlet')}}"><i class="fa fa-circle-o"></i> Tambah Atlet</a></li>
+          <li><a href="{{url('admin/data-atlet')}}"><i class="fa fa-circle-o"></i> Data Atlet</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#">
           <i class="fa fa-calendar"></i>
           <span>Kalender Kejuaraan</span>
           <span class="pull-right-container">

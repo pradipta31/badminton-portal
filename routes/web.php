@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Auth::routes();
+
+Route::group(['namespace' => 'Frontend'], function(){
+  Route::get('/', 'HomeController@index');
+});
 
 Route::get('login', function(){
   return view('login');
@@ -31,13 +33,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::get('berita/{id_berita}/edit-berita', 'BeritaController@editBerita');
   Route::put('berita/{id_berita}/edit-berita', 'BeritaController@updateBerita');
   Route::delete('berita/{id_berita}', 'BeritaController@deleteBerita');
-
-  // Other Routing can create here
-});
-
-// Routing Pengunjung/User
-Route::group(['namespace' => 'User'], function(){
-  Route::get('/', 'HomeController@index');
 
   // Other Routing can create here
 });

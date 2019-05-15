@@ -149,7 +149,7 @@ class BeritaController extends Controller
 
     public function deleteBerita($id_berita){
       $berita = Berita::where('id',$id_berita)->delete();
-      Session::flash('success', 'Berita berhasil yang terpilih berhasil dihapus !');
+      Session::flash('success', 'Berita yang terpilih berhasil dihapus !');
       return redirect('admin/berita/data-berita');
     }
 }

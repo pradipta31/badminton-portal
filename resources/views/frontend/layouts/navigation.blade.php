@@ -1,4 +1,9 @@
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a><ul>
+<style media="screen">
+  a:hover{
+    text-decoration: none;
+  }
+</style>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-align-justify"></i> Menu</a><ul>
     <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>
     <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a> </li>

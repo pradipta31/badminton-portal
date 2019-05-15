@@ -17,9 +17,11 @@ class CreateAtletsTable extends Migration
             $table->bigIncrements('id');
             $table->string('kode_atlet')->unique();
             $table->string('nama');
+            $table->string('tempat_lahir');
             $table->date('tgl_lahir');
             $table->string('klub');
             $table->string('cabang');
+            $table->string('foto')->nullable();
             $table->string('status');
             $table->timestamps();
         });

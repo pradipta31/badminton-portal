@@ -14,7 +14,11 @@
 <body>
 
 <div id="header">
-  <h1><a href="dashboard.html">Maruti Admin</a></h1>
+  <h1>
+    <a href="dashboard.html" style="color: white; margin-left: 5px; font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 25px; text-decoration: none">
+      Badminton Portal
+    </a>
+</h1>
 </div>
 @include('frontend.layouts.navigation')
 <div id="content">

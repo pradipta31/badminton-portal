@@ -34,5 +34,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::put('berita/{id_berita}/edit-berita', 'BeritaController@updateBerita');
   Route::delete('berita/{id_berita}', 'BeritaController@deleteBerita');
 
+  // Route untuk Atlet
+  Route::get('atlet/tambah-atlet', 'AtletController@tambahAtlet');
+  Route::post('atlet/tambah-atlet', 'AtletController@simpanAtlet');
+  Route::get('atlet/data-atlet', 'AtletController@indexAtlet');
+  Route::get('atlet/{id_atlet}/edit-atlet', 'AtletController@editAtlet');
+  Route::put('atlet/{id_atlet}/edit-atlet', 'AtletController@updateAtlet');
+  Route::delete('atlet/{id_atlet}', 'AtletController@deleteAtlet');
   // Other Routing can create here
 });

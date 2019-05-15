@@ -79,8 +79,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{url('admin/tambah-atlet')}}"><i class="fa fa-circle-o"></i> Tambah Atlet</a></li>
-          <li><a href="{{url('admin/data-atlet')}}"><i class="fa fa-circle-o"></i> Data Atlet</a></li>
+          <li><a href="{{url('admin/atlet/tambah-atlet')}}"><i class="fa fa-circle-o"></i> Tambah Atlet</a></li>
+          <li><a href="{{url('admin/atlet/data-atlet')}}"><i class="fa fa-circle-o"></i> Data Atlet</a></li>
         </ul>
       </li>
       <li class="treeview">

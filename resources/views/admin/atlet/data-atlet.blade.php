@@ -1,17 +1,17 @@
 @extends('admin.layouts.master')
-@section('title','Data Berita')
+@section('title','Data Atlet')
 @section('css')
   <link rel="stylesheet" href="{{asset('backend/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
 @endsection
 @section('content')
 <section class="content-header">
   <h1>
-    Berita
-    <small>Data Berita</small>
+    Atlet
+    <small>Data Atlet</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="{{url('admin/dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li class="active">Data Berita</li>
+    <li class="active">Data Atlet</li>
   </ol>
 </section>
 <section class="content">
@@ -32,21 +32,23 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Data Berita</h3>
+          <h3 class="box-title">Data Atlet</h3>
         </div>
         <div class="box-body">
-          <a href="{{url('admin/berita/tambah-berita')}}" class="btn btn-primary btn-md" style="margin-bottom: 5px">
+          <a href="{{url('admin/atlet/tambah-atlet')}}" class="btn btn-primary btn-md" style="margin-bottom: 5px">
             <i class="fa fa-plus"></i>
-            Tambah Berita Baru
+            Tambah Atlet Baru
           </a>
           <div class="table-responsive">
-            <table id="tabelBerita" class="table table-bordered table-striped">
+            <table id="tabelAtlet" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Admin</th>
-                  <th>Judul</th>
-                  <th>Cover</th>
+                  <th>Kode Atlet</th>
+                  <th>Nama</th>
+                  <th>TTL</th>
+                  <th>Klub</th>
+                  <th>Cabang</th>
                   <th>Status</th>
                   <th>Tanggal</th>
                   <th>Opsi</th>
@@ -56,27 +58,26 @@
                 @php
                   $no = 1;
                 @endphp
-                @foreach($beritas as $berita)
+                @foreach($atlets as $atlet)
                   <tr>
                     <td>{{$no++}}</td>
-                    <td>{{$berita->user->nama}}</td>
-                    <td>{{$berita->judul}}</td>
+                    <td>{{$atlet->kode_atlet}}</td>
+                    <td>{{$atlet->nama}}</td>
+                    <td>{{$atlet->tempat_lahir}}, {{$atlet->tgl_lahir}}</td>
+                    <td>{{$atlet->klub}}</td>
+                    <td>{{$atlet->cabang}}</td>
                     <td>
-                      <button class="btn btn-primary btn-sm" onClick="showImage('{{$berita->gambar}}');">
-                        <i class="fa fa-eye"></i>
-                      </button>
-                    </td>
-                    <td>
-                      @if($berita->status == 'published')
-                        <span class="label label-success">Published</span>
+                      @if($atlet->status == 'aktif')
+                        <span class="label label-success">Aktif</span>
                       @else
-                        <span class="label label-warning">Archived</span>
+                        <span class="label label-danger">Non Aktif</span>
                       @endif
                     </td>
-                    <td>{{$berita->created_at->format('d-m-Y')}}</td>
+                    <td>{{$atlet->created_at->format('d-m-Y')}}</td>
                     <td>
-                      <a href="{{url('admin/berita/'.$berita->id.'/edit-berita')}}" class="fa fa-pencil"></a>
-                      <a href="javascript:void(0);" class="fa fa-trash" onclick="deleteBerita('{{$berita->id}}')"></a>
+                      <a href="javascript:void(0);" class="fa fa-eye" onclick="showImage('{{$atlet->foto}}')"></a>
+                      <a href="{{url('admin/atlet/'.$atlet->id.'/edit-atlet')}}" class="fa fa-pencil"></a>
+                      <a href="javascript:void(0);" class="fa fa-trash" onclick="deleteAtlet('{{$atlet->id}}')"></a>
                     </td>
                   </tr>
                 @endforeach
@@ -98,23 +99,23 @@
   <script src="{{asset('backend/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('backend/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
   <script type="text/javascript">
-    function showImage(gambar){
+    function showImage(foto){
       bootbox.dialog({
-        message: '<img src="{{asset('backend/images/berita')}}/'+gambar+'" class="img-responsive">',
+        message: '<img src="{{asset('backend/images/atlet')}}/'+foto+'" class="img-responsive">',
         closeButton: true,
         size: 'small'
       });
     }
-    function deleteBerita(id_berita){
-        bootbox.confirm("Anda yakin ingin menghapus berita ini secara permanen ?", function(result){
+    function deleteAtlet(id_atlet){
+        bootbox.confirm("Anda yakin ingin menghapus atlet ini secara permanen ?", function(result){
             if (result) {
-                $('#formDelete').attr('action', '{{url('admin/berita')}}/'+id_berita);
+                $('#formDelete').attr('action', '{{url('admin/atlet')}}/'+id_atlet);
                 $('#formDelete').submit();
             }
         });
     }
     $(function(){
-      $('#tabelBerita').dataTable()
+      $('#tabelAtlet').dataTable()
     })
   </script>
 @endsection

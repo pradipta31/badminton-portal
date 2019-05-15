@@ -27,14 +27,14 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 }
 
 #header h1 {
-    background: url("../img/logo.png") no-repeat scroll 0 0 transparent;
-    height: 31px;
+    /* background: url("../img/logo1.png") no-repeat scroll 0 0 transparent; */
+    height: 5px;
     left: 15px;
-    line-height: 600px;
-    overflow: hidden;
+    /* line-height: 600px; */
+    /* overflow: hidden; */
     position: relative;
-    top:20px; 
-    width: 191px;
+    top:20px;
+    /* width: 191px; */
 }
 
 #header h1 a {
@@ -52,7 +52,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 #search input[type=text] {
 	border-radius: 0px 0 0 0px;
 	padding:8px 10px ;
-	border:1px; line-height:24px; 
+	border:1px; line-height:24px;
 	width:166px;
 }
 
@@ -60,7 +60,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 	border: 0;
 	margin-top: -11px;
 	padding:8px 10px; margin-left:-5px;
-	background-color:#2e363f; 
+	background-color:#2e363f;
 }
 #search button i {
 	opacity: 0.5;
@@ -70,16 +70,16 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 }
 /* Top user navigation */
 #sidebar{ width:100%; background:#49cced;  position:absolute; clear:both; top:62px;}
-#sidebar > ul{ margin:0px; padding:0px; width:100%; display:block; z-index:999;} 
-#sidebar > ul > li { list-style-type:none; float:left; display:block; margin:0px; border-right:1px solid #41bedd; position:relative; padding:10px; cursor:pointer} 
+#sidebar > ul{ margin:0px; padding:0px; width:100%; display:block; z-index:999;}
+#sidebar > ul > li { list-style-type:none; float:left; display:block; margin:0px; border-right:1px solid #41bedd; position:relative; padding:10px; cursor:pointer}
 #sidebar > ul > li a{ padding:12px 0;}
-#sidebar > ul > li:hover ul { display:block;} 
-#sidebar > ul > li:hover { background-color:#41bedd;} 
+#sidebar > ul > li:hover ul { display:block;}
+#sidebar > ul > li:hover { background-color:#41bedd;}
 #sidebar > ul > li:hover a{ background:none;}
-#sidebar > ul li ul { margin:0px; padding:0px; display:none; z-index:999;  position:absolute; left:0px; top:40px;  background:#41bedd; min-width:200px;} 
-#sidebar > ul li ul li { list-style-type:none; margin:0px; font-size:12px;line-height:30px;  } 
-#sidebar > ul li ul li a { display:block; padding:5px 10px; color:#fff; text-decoration:none; font-weight:bold; } 
-#sidebar > ul li ul li:hover a{ background-color:#36a8c5;} 
+#sidebar > ul li ul { margin:0px; padding:0px; display:none; z-index:999;  position:absolute; left:0px; top:40px;  background:#41bedd; min-width:200px;}
+#sidebar > ul li ul li { list-style-type:none; margin:0px; font-size:12px;line-height:30px;  }
+#sidebar > ul li ul li a { display:block; padding:5px 10px; color:#fff; text-decoration:none; font-weight:bold; }
+#sidebar > ul li ul li:hover a{ background-color:#36a8c5;}
 #sidebar > ul li span { cursor:pointer; margin:0px 2px 0 5px; font-weight:bold; color:#fff; font-size:11px; }
 #sidebar > ul li a i{ background-image: url("../img/glyphicons-halflings-white.png");     margin-top:4px;    vertical-align: top;}
 #my_menu_input{ display:none;}
@@ -107,7 +107,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 }
 #user-nav > ul > li:hover{ background:#232a32;}
 #user-nav > ul > li > a {
-	padding: 15px 10px; 
+	padding: 15px 10px;
 	display: block;
 	font-size: 12px;
 }
@@ -258,7 +258,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 	margin-top: 4px;
 	border-style: solid;
 	border-width: 1px;
-	border-color: transparent;	
+	border-color: transparent;
 }
 /* Footer */
 #footer {
@@ -343,7 +343,7 @@ ul.stat-boxes2 li:hover{  background:#f6f6f6}
 	width: 16px;
 	height: 16px;
 	display: inline-block;
-	margin: -2px 0 0 !important; 
+	margin: -2px 0 0 !important;
 	border-right: 1px solid #dddddd;
 	margin-right: 10px;
 	padding: 10px;
@@ -573,7 +573,7 @@ ul.stat-boxes2 li:hover{  background:#f6f6f6}
 
 .widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {
 	background-color: #efefef;
-	
+
     border-bottom: 1px solid #CDCDCD;
     height: 36px;
 }
@@ -811,7 +811,7 @@ ul.stat-boxes2 li:hover{  background:#f6f6f6}
 
 .panel-right .panel-title, .panel-right2 .panel-title  {
 	width: 100%;
-	background-color: #ececec; 
+	background-color: #ececec;
 	border-bottom: 1px solid #dddddd;
 }
 .panel-right .panel-title h5 ,.panel-right2 .panel-title h5{
@@ -914,7 +914,7 @@ ul.stat-boxes2 li:hover{  background:#f6f6f6}
 }
 .chat-users .contact-list li {
     border: 1px solid #DADADA;
-    margin:5px 5px; 
+    margin:5px 5px;
     padding: 1px;
     position: relative;
 }
@@ -1077,10 +1077,10 @@ span.icon .checker {
 }
 
 .dataTables_paginate .first{
-    border-radius: 4px 0 0 4px;    
+    border-radius: 4px 0 0 4px;
 }
 .dataTables_paginate .last {
-    border-radius: 0 4px 4px 0;    
+    border-radius: 0 4px 4px 0;
 }
 .dataTables_paginate .ui-state-disabled, .fc-state-disabled, .pagination.alternate li.disabled a {
     color: #AAAAAA !important;
@@ -1138,7 +1138,7 @@ div.dataTables_wrapper .ui-widget-header {
 	background-color: #FFFFE3 !important;
 }
 /* Misc */
-.nopadding {	
+.nopadding {
 	padding: 0 !important;
 }
 .nopadding .table {
@@ -1228,7 +1228,7 @@ form {
 	padding: 10px 0;
 }
 .form-horizontal input[type=text], .form-horizontal input[type=password], .form-horizontal textarea {
-	
+
 }
 .row-fluid .span20{ width:97.8%}
 .form-horizontal .form-actions {
@@ -1275,7 +1275,7 @@ form {
 	.navbar > .nav {
 		float: none;
 	}
-	
+
 	#my_menu{ display:none;}
 	#my_menu_input{ display:block;}
 	#user-nav > ul {
@@ -1292,7 +1292,7 @@ form {
 	}
 	#content-header {
 		margin-top: 0;
-		
+
 		text-align: center;
 	}
 	#content-header h1, #content-header .btn-group {
@@ -1312,19 +1312,19 @@ form {
 		margin-right: 0;
 		left: 30%;
 	}
-	
+
 #sidebar { float: none; width: 100% !important;	display:block; position:relative; top:0px;}
-#sidebar > ul{ margin:0px; padding:0px; width:100%; display:block; z-index:999; position:relative} 
-#sidebar > ul > li { list-style-type:none; display:block; border-top:1px solid #41BEDD; float:none !important; margin:0px; position:relative; padding:2px 10px; cursor:pointer} 
-#sidebar > ul > li:hover ul { display:none;} 
-#sidebar > ul > li:hover { background-color:#36A8c5;} 
+#sidebar > ul{ margin:0px; padding:0px; width:100%; display:block; z-index:999; position:relative}
+#sidebar > ul > li { list-style-type:none; display:block; border-top:1px solid #41BEDD; float:none !important; margin:0px; position:relative; padding:2px 10px; cursor:pointer}
+#sidebar > ul > li:hover ul { display:none;}
+#sidebar > ul > li:hover { background-color:#36A8c5;}
 #sidebar > ul > li:hover a{ background:none;}
-#sidebar > ul li ul { margin:0px; padding:0px; top:35px; z-index:999; display:none; position:absolute;  background:#41BEDD; width:100%; min-width:100%; border-radius:none;} 
-#sidebar > ul li ul li { list-style-type:none; margin:0px; font-size:12px; line-height:30px;  } 
-#sidebar > ul li ul li a { display:block; padding:5px 10px; color:#fff; text-decoration:none; font-weight:bold; } 
-#sidebar > ul li ul li:hover a{ background-color:#36A8c5; border-radius:0px;} 
+#sidebar > ul li ul { margin:0px; padding:0px; top:35px; z-index:999; display:none; position:absolute;  background:#41BEDD; width:100%; min-width:100%; border-radius:none;}
+#sidebar > ul li ul li { list-style-type:none; margin:0px; font-size:12px; line-height:30px;  }
+#sidebar > ul li ul li a { display:block; padding:5px 10px; color:#fff; text-decoration:none; font-weight:bold; }
+#sidebar > ul li ul li:hover a{ background-color:#36A8c5; border-radius:0px;}
 #sidebar > ul li span { cursor:pointer; margin:0px 2px 0 5px; font-weight:bold; color:#fff; font-size:12px; }
-#sidebar > ul li a i{ background-image: url("../img/glyphicons-halflings-white.png");  margin-top:4px;  vertical-align: top;}	
+#sidebar > ul li a i{ background-image: url("../img/glyphicons-halflings-white.png");  margin-top:4px;  vertical-align: top;}
 #sidebar > a { padding: 9px 20px 9px 15px; display: block !important; color: #eeeeee; float:none !important;	font-size:12px; font-weight:bold}
 #sidebar > ul > li > a { padding:5px;	display:block; 	color: #AAAAAA;}
 .widget-title .buttons > .btn { width: 11px; white-space: nowrap;	overflow: hidden;}

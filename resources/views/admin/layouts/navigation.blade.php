@@ -99,14 +99,15 @@
       <li class="treeview">
         <a href="#">
           <i class="fa fa-random"></i>
-          <span>Rangking Nasional</span>
+          <span>Kategori & Rangking</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{url('admin/tambah-kalender-kejuaraan')}}"><i class="fa fa-circle-o"></i> Tambah Rangking Nasional</a></li>
-          <li><a href="{{url('admin/kalender-kejuaraan')}}"><i class="fa fa-circle-o"></i> Rangking Nasional</a></li>
+          <li><a href="{{url('admin/kategori')}}"><i class="fa fa-circle-o"></i> Data Kategori</a></li>
+          <li><a href="{{url('admin/rangking/tambah-rangking')}}"><i class="fa fa-circle-o"></i> Tambah Rangking</a></li>
+          <li><a href="{{url('admin/rangking/data-rangking')}}"><i class="fa fa-circle-o"></i> Rangking</a></li>
         </ul>
       </li>
       <li class="treeview">

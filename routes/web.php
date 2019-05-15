@@ -41,5 +41,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::get('atlet/{id_atlet}/edit-atlet', 'AtletController@editAtlet');
   Route::put('atlet/{id_atlet}/edit-atlet', 'AtletController@updateAtlet');
   Route::delete('atlet/{id_atlet}', 'AtletController@deleteAtlet');
+
+  // Route Kategori dan rangking
+  Route::get('kategori', 'RangkingController@indexKategori');
+  Route::post('kategori/tambah-kategori', 'RangkingController@simpanKategori');
+  Route::put('kategori/{id_kategori}', 'RangkingController@updateKategori');
+  Route::delete('kategori/{id_kategori}', 'RangkingController@deleteKategori');
+
+  Route::get('rangking/tambah-rangking', 'RangkingController@tambahRangking');
   // Other Routing can create here
 });

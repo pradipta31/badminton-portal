@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master',['activeMenu' => 'berita'])
 @section('title','Tambah Berita')
 
 @section('content')
@@ -29,8 +29,8 @@
     <form class="" action="{{url('admin/berita/tambah-berita')}}" method="post" enctype="multipart/form-data">
       {{csrf_field()}}
       <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="col-md-9 col-sm-9 col-xs-9">
+        <div class="col-md-12">
+          <div class="col-md-9">
             <textarea name="isi" rows="13"></textarea>
           </div>
           <div class="col-md-3">

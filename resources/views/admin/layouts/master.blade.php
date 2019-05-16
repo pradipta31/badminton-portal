@@ -17,7 +17,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   @include('admin.layouts.header')
-  @include('admin.layouts.navigation')
+  @include('admin.layouts.navigation',['activeMenu' => $activeMenu])
   <div class="content-wrapper">
     @yield('content')
   </div>

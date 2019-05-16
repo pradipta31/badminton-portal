@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master',['activeMenu' => 'atlet'])
 @section('title','Edit Atlet')
 
 @section('content')

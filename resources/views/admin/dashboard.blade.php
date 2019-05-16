@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.master',['activeMenu' => 'dashboard'])
 @section('title','Dashboard')
 
 @section('content')

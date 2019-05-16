@@ -11,7 +11,7 @@
     </div>
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
-      <li><a href="{{url('admin/dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+      <li class="{{$activeMenu == 'dashboard' ? 'active' : ''}}"><a href="{{url('admin/dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-sitemap"></i> <span>Organisasi</span>
@@ -57,7 +57,7 @@
           </li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview {{$activeMenu == 'berita' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-rss-square"></i>
           <span>Berita</span>
@@ -70,7 +70,7 @@
           <li><a href="{{url('admin/berita/data-berita')}}"><i class="fa fa-circle-o"></i> Data Berita</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview {{$activeMenu == 'atlet' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-users"></i>
           <span>Atlet</span>
@@ -96,7 +96,7 @@
           <li><a href="{{url('admin/kalender-kejuaraan')}}"><i class="fa fa-circle-o"></i> Kalender Kejuaraan</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview {{$activeMenu == 'kategori-rangking' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-random"></i>
           <span>Kategori & Rangking</span>
@@ -105,7 +105,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{url('admin/kategori')}}"><i class="fa fa-circle-o"></i> Data Kategori</a></li>
+          <li><a href="{{url('admin/kategori')}}"><i class="fa fa-circle-o"></i> Daftar Kategori</a></li>
           <li><a href="{{url('admin/rangking/tambah-rangking')}}"><i class="fa fa-circle-o"></i> Tambah Rangking</a></li>
           <li><a href="{{url('admin/rangking/data-rangking')}}"><i class="fa fa-circle-o"></i> Rangking</a></li>
         </ul>

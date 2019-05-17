@@ -83,10 +83,10 @@
           <li><a href="{{url('admin/atlet/data-atlet')}}"><i class="fa fa-circle-o"></i> Data Atlet</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview {{$activeMenu == 'kejuaraan' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-calendar"></i>
-          <span>Kalender Kejuaraan</span>
+          <span>Kejuaraan</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>

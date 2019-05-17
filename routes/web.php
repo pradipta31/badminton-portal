@@ -55,6 +55,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::post('kejuaraan/tambah-kejuaraan', 'KejuaraanController@simpanKejuaraan');
   Route::get('kejuaraan/daftar-kejuaraan', 'KejuaraanController@indexKejuaraan');
   Route::put('kejuaraan/{id_kejuaraan}', 'KejuaraanController@updateKejuaraan');
+  Route::post('kejuaraan/{id_kejuaraan}', 'KejuaraanController@simpanDocument');
   Route::delete('kejuaraan/{id_kejuaraan}', 'KejuaraanController@deleteKejuaraan');
   // Other Routing can create here
 });

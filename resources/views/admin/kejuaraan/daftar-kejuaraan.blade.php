@@ -85,11 +85,47 @@
                       @endif
                     </td>
                     <td>
-                      <a href="#" class="fa fa-file"></a>
+                      <a href="#" class="fa fa-file" data-toggle="modal" data-target="#uploadFile{{$kejuaraan->id}}"></a>
                       <a href="#" class="fa fa-pencil" data-toggle="modal" data-target="#editKejuaraan{{$kejuaraan->id}}"></a>
-                      <a href="javascript:void(0);" class="fa fa-trash" onclick="deleteKejuaraan('{{$kejuaraan->id}}')"></a>
+                      <!-- <a href="javascript:void(0);" class="fa fa-trash" onclick="deleteKejuaraan('{{$kejuaraan->id}}')"></a> -->
                     </td>
                   </tr>
+                  <!-- UPLOAD FILE -->
+                  <div class="modal fade" id="uploadFile{{$kejuaraan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3 class="modal-title" id="exampleModalLabel">Upload File Kejuaraan : {{$kejuaraan->nama_kejuaraan}}</h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form action="{{url('admin/kejuaraan/'.$kejuaraan->id)}}" method="post" enctype="multipart/form-data">
+                          {{ csrf_field() }}
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label class="col-form-label">Ketentuan Kejuaraan</label>
+                              <input type="file" class="form-control" name="ketentuan">
+                            </div>
+                            <div class="form-group">
+                              <label class="col-form-label">Tatacara Pendaftaran</label>
+                              <input type="file" class="form-control" name="tatacara">
+                            </div>
+                            <div class="form-group">
+                              <label class="col-form-label">Hasil Kejuaraan</label>
+                              <input type="file" class="form-control" name="hasil_kejuaraan">
+                              <small>Note: Kosongkan jika belum ada hasil kejuaraan.</small>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
                   <!-- EDIT KEJUARAAN -->
                   <div class="modal fade" id="editKejuaraan{{$kejuaraan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -181,6 +217,9 @@
   <script type="text/javascript">
     function showModalEdit() {
         $('#editKejuaraan').modal('show');
+    }
+    function showModalFile(){
+      $('#showModalFile').modal('show');
     }
     function deleteKejuaraan(id_kejuaraan){
         bootbox.confirm("Anda yakin ingin menghapus kejuaraan ini secara permanen ?", function(result){

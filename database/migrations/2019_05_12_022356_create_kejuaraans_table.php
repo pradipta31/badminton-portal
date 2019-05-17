@@ -15,13 +15,13 @@ class CreateKejuaraansTable extends Migration
     {
         Schema::create('kejuaraans', function (Blueprint $table) {
           $table->bigIncrements('id');
-          $table->string('judul');
+          $table->string('nama_kejuaraan');
           $table->string('kategori');
           $table->string('kabupaten');
-          $table->string('provinsi');
+          $table->date('tgl_mulai')->nullable();
+          $table->date('tgl_akhir');
           $table->string('hadiah')->nullable();
           $table->date('batas_pendaftaran')->nullable();
-          $table->string('hasil_pertandingan')->nullable();
           $table->timestamps();
         });
     }

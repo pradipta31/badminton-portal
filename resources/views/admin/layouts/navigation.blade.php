@@ -92,8 +92,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{url('admin/tambah-kalender-kejuaraan')}}"><i class="fa fa-circle-o"></i> Tambah Kalender Kejuaraan</a></li>
-          <li><a href="{{url('admin/kalender-kejuaraan')}}"><i class="fa fa-circle-o"></i> Kalender Kejuaraan</a></li>
+          <li><a href="{{url('admin/kejuaraan/tambah-kejuaraan')}}"><i class="fa fa-circle-o"></i> Tambah Kejuaraan</a></li>
+          <li><a href="{{url('admin/kejuaraan/daftar-kejuaraan')}}"><i class="fa fa-circle-o"></i> Daftar Kejuaraan</a></li>
         </ul>
       </li>
       <li class="treeview {{$activeMenu == 'kategori-rangking' ? 'active' : ''}}">

@@ -18,6 +18,7 @@ class CreateDetailKejuaraansTable extends Migration
             $table->unsignedBigInteger('id_kejuaraan');
             $table->string('ketentuan');
             $table->string('tatacara');
+            $table->string('hasil_kejuaraan')->nullable();
             $table->timestamps();
 
             $table->foreign('id_kejuaraan')->references('id')->on('kejuaraans')

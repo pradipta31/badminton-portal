@@ -105,16 +105,34 @@
                           <div class="modal-body">
                             <div class="form-group">
                               <label class="col-form-label">Ketentuan Kejuaraan</label>
-                              <input type="file" class="form-control" name="ketentuan">
+                              <input type="file" class="form-control" name="ketentuan" multiple>
+                              @php
+                                $id_kejuaraan = $kejuaraan->id;
+                                $detail_kejuaraan = \App\DetailKejuaraan::findOrFail($id_kejuaraan)->first();
+                              @endphp
+                              @if($detail_kejuaraan->ketentuan == null)
+                                <span class="label label-warning">File ketentuan belum diupload.</span>
+                              @else
+                                <a href="#">Download File</a>
+                              @endif
                             </div>
                             <div class="form-group">
                               <label class="col-form-label">Tatacara Pendaftaran</label>
-                              <input type="file" class="form-control" name="tatacara">
+                              <input type="file" class="form-control" name="tatacara" multiple>
+                              @if($detail_kejuaraan->tatacara == null)
+                                <span class="label label-warning">File tatacara belum diupload.</span>
+                              @else
+                                <a href="#">Download File</a>
+                              @endif
                             </div>
                             <div class="form-group">
                               <label class="col-form-label">Hasil Kejuaraan</label>
                               <input type="file" class="form-control" name="hasil_kejuaraan">
-                              <small>Note: Kosongkan jika belum ada hasil kejuaraan.</small>
+                              @if($detail_kejuaraan->hasil_kejuaraan == null)
+                                <span class="label label-warning">Hasil Kejuaraan belum diupload.</span>
+                              @else
+                                <a href="#">Download File</a>
+                              @endif
                             </div>
                           </div>
                           <div class="modal-footer">

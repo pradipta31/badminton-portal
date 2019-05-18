@@ -17,6 +17,7 @@ class CreateGalleriesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_user');
             $table->string('judul');
+            $table->string('slug');
             $table->string('gambar');
             $table->text('deskripsi');
             $table->enum('status',['aktif','nonaktif']);

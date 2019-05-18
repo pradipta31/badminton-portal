@@ -47,7 +47,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::post('kategori/tambah-kategori', 'RangkingController@simpanKategori');
   Route::put('kategori/{id_kategori}', 'RangkingController@updateKategori');
   Route::delete('kategori/{id_kategori}', 'RangkingController@deleteKategori');
-
   Route::get('rangking/tambah-rangking', 'RangkingController@tambahRangking');
 
   // Route Kejuaraan
@@ -64,5 +63,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::get('ketentuan/{get_ketentuan}/download', 'KejuaraanController@downloadKetentuan')->name('ketentuan.download');
   Route::get('tatacara/{get_tatacara}/download', 'KejuaraanController@downloadTatacara')->name('tatacara.download');
   Route::get('hasil/{get_hasil}/download', 'KejuaraanController@downloadHasil')->name('hasil.download');
+
+  // Route Gallery
+  Route::get('gallery/tambah-gallery', 'GalleryController@tambahGallery');
+  Route::post('gallery/tambah-gallery', 'GalleryController@simpanGallery');
+  Route::get('gallery/daftar-gallery', 'GalleryController@indexGallery');
+  Route::put('gallery/{id_gallery}', 'GalleryController@updateGallery');
+  Route::delete('gallery/{id_gallery}', 'GalleryController@deleteGallery');
   // Other Routing can create here
 });

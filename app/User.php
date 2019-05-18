@@ -33,10 +33,16 @@ class User extends Authenticatable
      *
      * @var array
      */
-    public function berita(){
-      return $this->hasOne('App\Berita');
-    }
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function berita(){
+      return $this->hasOne('App\Berita');
+    }
+
+    public function gallery(){
+      return $this->hasOne('App\Gallery');
+    }
 }

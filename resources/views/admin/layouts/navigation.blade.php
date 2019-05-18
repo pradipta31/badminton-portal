@@ -110,7 +110,7 @@
           <li><a href="{{url('admin/rangking/data-rangking')}}"><i class="fa fa-circle-o"></i> Rangking</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview {{$activeMenu == 'gallery' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-envira"></i>
           <span>Gallery</span>
@@ -119,8 +119,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{url('admin/tambah-kalender-kejuaraan')}}"><i class="fa fa-circle-o"></i> Tambah Gallery</a></li>
-          <li><a href="{{url('admin/kalender-kejuaraan')}}"><i class="fa fa-circle-o"></i> Gallery</a></li>
+          <li><a href="{{url('admin/gallery/tambah-gallery')}}"><i class="fa fa-circle-o"></i> Tambah Gallery</a></li>
+          <li><a href="{{url('admin/gallery/daftar-gallery')}}"><i class="fa fa-circle-o"></i> Gallery</a></li>
         </ul>
       </li>
     </ul>

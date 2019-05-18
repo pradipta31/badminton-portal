@@ -15,7 +15,9 @@ class UsersTableSeeder extends Seeder
           'nama' => 'Admin',
           'username' => 'admin',
           'email' => 'admin@gmail.com',
-          'password' => bcrypt('123456')
+          'password' => bcrypt('123456'),
+          'created_at' => now(),
+          'updated_at' => now()
         ]);
     }
 }

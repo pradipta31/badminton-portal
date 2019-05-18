@@ -50,6 +50,7 @@
                   <th>Kabupaten</th>
                   <th>Hadiah</th>
                   <th>Batas Pendaftaran</th>
+                  <th>Berkas Kejuaraan</th>
                   <th>Opsi</th>
                 </tr>
               </thead>
@@ -85,9 +86,15 @@
                       @endif
                     </td>
                     <td>
-                      <a href="#" class="fa fa-file" data-toggle="modal" data-target="#uploadFile{{$kejuaraan->id}}"></a>
+                      @if($kejuaraan->status_berkas == 'sudah')
+                        <a href="{{url('admin/kejuaraan/berkas/'.$kejuaraan->id)}}" class="btn btn-success btn-sm">Lihat Berkas</a>
+                      @else
+                        <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#uploadFile{{$kejuaraan->id}}">Upload Berkas</a>
+                      @endif
+                    </td>
+                    <td>
                       <a href="#" class="fa fa-pencil" data-toggle="modal" data-target="#editKejuaraan{{$kejuaraan->id}}"></a>
-                      <!-- <a href="javascript:void(0);" class="fa fa-trash" onclick="deleteKejuaraan('{{$kejuaraan->id}}')"></a> -->
+                      <a href="javascript:void(0);" class="fa fa-trash" onclick="deleteKejuaraan('{{$kejuaraan->id}}')"></a>
                     </td>
                   </tr>
                   <!-- UPLOAD FILE -->
@@ -105,34 +112,15 @@
                           <div class="modal-body">
                             <div class="form-group">
                               <label class="col-form-label">Ketentuan Kejuaraan</label>
-                              <input type="file" class="form-control" name="ketentuan" multiple>
-                              @php
-                                $id_kejuaraan = $kejuaraan->id;
-                                $detail_kejuaraan = \App\DetailKejuaraan::findOrFail($id_kejuaraan)->first();
-                              @endphp
-                              @if($detail_kejuaraan->ketentuan == null)
-                                <span class="label label-warning">File ketentuan belum diupload.</span>
-                              @else
-                                <a href="#">Download File</a>
-                              @endif
+                              <input type="file" class="form-control" name="ketentuan">
                             </div>
                             <div class="form-group">
                               <label class="col-form-label">Tatacara Pendaftaran</label>
-                              <input type="file" class="form-control" name="tatacara" multiple>
-                              @if($detail_kejuaraan->tatacara == null)
-                                <span class="label label-warning">File tatacara belum diupload.</span>
-                              @else
-                                <a href="#">Download File</a>
-                              @endif
+                              <input type="file" class="form-control" name="tatacara">
                             </div>
                             <div class="form-group">
                               <label class="col-form-label">Hasil Kejuaraan</label>
                               <input type="file" class="form-control" name="hasil_kejuaraan">
-                              @if($detail_kejuaraan->hasil_kejuaraan == null)
-                                <span class="label label-warning">Hasil Kejuaraan belum diupload.</span>
-                              @else
-                                <a href="#">Download File</a>
-                              @endif
                             </div>
                           </div>
                           <div class="modal-footer">

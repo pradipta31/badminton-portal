@@ -22,6 +22,7 @@ class CreateKejuaraansTable extends Migration
           $table->date('tgl_akhir');
           $table->string('hadiah')->nullable();
           $table->date('batas_pendaftaran')->nullable();
+          $table->enum('status_berkas',['sudah','belum']);
           $table->timestamps();
         });
     }

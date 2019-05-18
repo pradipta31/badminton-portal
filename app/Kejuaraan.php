@@ -14,10 +14,18 @@ class Kejuaraan extends Model
       'tgl_mulai',
       'tgl_akhir',
       'hadiah',
-      'batas_pendaftaran'
+      'batas_pendaftaran',
+      'status_berkas'
     ];
 
     public function detailKejuaraan(){
-      return $this->hasOne('App\DetailKejuaraan');
+      return $this->hasOne('App\DetailKejuaraan', 'id_kejuaraan');
+    }
+
+    public static function boot() {
+        parent::boot();
+        static::deleting(function($kejuaraan) {
+             $kejuaraan->detailKejuaraan()->delete();
+        });
     }
 }

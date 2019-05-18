@@ -55,7 +55,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::post('kejuaraan/tambah-kejuaraan', 'KejuaraanController@simpanKejuaraan');
   Route::get('kejuaraan/daftar-kejuaraan', 'KejuaraanController@indexKejuaraan');
   Route::put('kejuaraan/{id_kejuaraan}', 'KejuaraanController@updateKejuaraan');
-  Route::post('kejuaraan/{id_kejuaraan}', 'KejuaraanController@simpanDocument');
   Route::delete('kejuaraan/{id_kejuaraan}', 'KejuaraanController@deleteKejuaraan');
+
+  // Route Berkas Kejuaraan
+  Route::post('kejuaraan/{id_kejuaraan}', 'KejuaraanController@simpanDocument');
+  Route::get('kejuaraan/berkas/{id_kejuaraan}', 'KejuaraanController@getBerkas');
+  Route::put('kejuaraan/berkas/{id_kejuaraan}', 'KejuaraanController@updateBerkas');
+  Route::get('ketentuan/{get_ketentuan}/download', 'KejuaraanController@downloadKetentuan')->name('ketentuan.download');
+  Route::get('tatacara/{get_tatacara}/download', 'KejuaraanController@downloadTatacara')->name('tatacara.download');
+  Route::get('hasil/{get_hasil}/download', 'KejuaraanController@downloadHasil')->name('hasil.download');
   // Other Routing can create here
 });

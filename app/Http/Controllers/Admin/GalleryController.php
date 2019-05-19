@@ -92,4 +92,58 @@ class GalleryController extends Controller
         return redirect()->back()->withInput();
       }
     }
+
+    public function getPhoto($id_gallery){
+      $gallery = Gallery::where('id',$id_gallery)->first();
+      $photos = DetailGallery::where('id_gallery', $id_gallery)->get();
+      return view('admin.gallery.tambah-gallery', compact('gallery','photos'));
+    }
+
+    public function tambahPhoto(Request $r){
+      $validator = Validator::make($r->all(), [
+        'gambar' => 'required',
+        'gambar.*' => 'mimes:jpeg,jpg,png'
+      ]);
+      if (!$validator->fails()) {
+        $gambar = $r->file('gambar');
+        $filename = time() . '.' . $gambar->getClientOriginalExtension();
+        Image::make($gambar)->save(public_path('/backend/images/photo/'.$filename));
+        $gallery = DetailGallery::create([
+            'id_gallery' => $r->id_gallery,
+            'gambar' => $filename
+        ]);
+        Session::flash('success', 'Photo gallery berhasil ditambahkan !');
+        return redirect('admin/gallery/tambah-foto/'.$r->id_gallery);
+      }else{
+        Session::flash('error', $validator->messages()->first());
+        return redirect()->back()->withInput();
+      }
+    }
+
+    public function updatePhoto(Request $r, $id_foto){
+      $validator = Validator::make($r->all(), [
+        'gambar' => 'required',
+        'gambar.*' => 'mimes:jpeg,jpg,png'
+      ]);
+      if (!$validator->fails()) {
+        $gambar = $r->file('gambar');
+        $filename = time() . '.' . $gambar->getClientOriginalExtension();
+        Image::make($gambar)->save(public_path('/backend/images/photo/'.$filename));
+        $gallery = DetailGallery::findOrFail($id_foto)->update([
+            'gambar' => $filename
+        ]);
+        Session::flash('success', 'Photo gallery berhasil diubah !');
+        return redirect('admin/gallery/tambah-foto/'.$r->id_gallery);
+      }else{
+        Session::flash('error', $validator->messages()->first());
+        return redirect()->back()->withInput();
+      }
+    }
+
+    public function deletePhoto($id_foto){
+      $id_gallery = DetailGallery::where('id', $id_foto)->first();
+      $photos = DetailGallery::where('id',$id_foto)->delete();
+      Session::flash('success', 'Foto yang terpilih berhasil dihapus !');
+      return redirect('admin/gallery/tambah-foto/'.$id_gallery->id_gallery);
+    }
 }

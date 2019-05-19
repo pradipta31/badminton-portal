@@ -1,6 +1,6 @@
 <header class="main-header">
   <a href="index2.html" class="logo">
-    <span class="logo-mini"><b>B</b>T</span>
+    <span class="logo-mini"><b>B</b>P</span>
     <span class="logo-lg"><b>Badminton</b>Portal</span>
   </a>
   <nav class="navbar navbar-static-top">

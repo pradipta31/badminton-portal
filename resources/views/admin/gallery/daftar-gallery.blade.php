@@ -76,7 +76,7 @@
                     </td>
                     <td>{{$gallery->created_at->format('d-m-Y')}}</td>
                     <td>
-                      <a href="#" class="btn btn-success btn-sm">Tambah Foto</a>
+                      <a href="{{url('admin/gallery/tambah-foto/'.$gallery->id)}}" class="btn btn-success btn-sm">Tambah Foto</a>
                     </td>
                     <td>
                       <a href="#" class="fa fa-pencil" data-toggle="modal" data-target="#editGallery{{$gallery->id}}"></a>
@@ -151,9 +151,9 @@
     }
     function showImage(gambar){
       bootbox.dialog({
-        message: '<img src="{{asset('backend/images/gallery')}}/'+gambar+'" class="img-responsive">',
+        message: '<img src="{{asset('backend/images/gallery')}}/'+gambar+'" width="550px" height="500px">',
         closeButton: true,
-        size: 'small'
+        size: 'medium'
       });
     }
     function deleteBerita(id_gallery){

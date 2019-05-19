@@ -70,5 +70,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::get('gallery/daftar-gallery', 'GalleryController@indexGallery');
   Route::put('gallery/{id_gallery}', 'GalleryController@updateGallery');
   Route::delete('gallery/{id_gallery}', 'GalleryController@deleteGallery');
+
+  // Route Gallery Photo
+  Route::get('gallery/tambah-foto/{id_gallery}', 'GalleryController@getPhoto');
+  Route::post('gallery/tambah-foto', 'GalleryController@tambahPhoto');
+  Route::put('gallery/tambah-foto/{id_foto}', 'GalleryController@updatePhoto');
+  Route::delete('gallery/tambah-foto/{id_foto}', 'GalleryController@deletePhoto');
   // Other Routing can create here
 });

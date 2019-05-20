@@ -12,51 +12,6 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
       <li class="{{$activeMenu == 'dashboard' ? 'active' : ''}}"><a href="{{url('admin/dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-sitemap"></i> <span>Organisasi</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Sejarah
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Tambah Sejarah</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Data Sejarah</a></li>
-            </ul>
-          </li>
-
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Struktur
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Tambah Struktur</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Data Struktur</a></li>
-            </ul>
-          </li>
-
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Pengprov
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Tambah Pengprov</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Data Pengprov</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
       <li class="treeview {{$activeMenu == 'berita' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-rss-square"></i>
@@ -73,12 +28,13 @@
       <li class="treeview {{$activeMenu == 'atlet' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-users"></i>
-          <span>Atlet</span>
+          <span>Klub dan Atlet</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
+          <li><a href="{{url('admin/klub/data-klub')}}"><i class="fa fa-circle-o"></i> Data Klub</a></li>
           <li><a href="{{url('admin/atlet/tambah-atlet')}}"><i class="fa fa-circle-o"></i> Tambah Atlet</a></li>
           <li><a href="{{url('admin/atlet/data-atlet')}}"><i class="fa fa-circle-o"></i> Data Atlet</a></li>
         </ul>

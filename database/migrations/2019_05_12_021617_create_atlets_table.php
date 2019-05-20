@@ -15,15 +15,17 @@ class CreateAtletsTable extends Migration
     {
         Schema::create('atlets', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_klub');
             $table->string('kode_atlet')->unique();
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
-            $table->string('klub');
-            $table->string('cabang');
             $table->string('foto')->nullable();
             $table->string('status');
             $table->timestamps();
+
+            $table->foreign('id_klub')->references('id')->on('clubs')
+            ->onUpdate('cascade');
         });
     }
 

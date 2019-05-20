@@ -20,7 +20,7 @@ class RangkingController extends Controller
 
     public function simpanKategori(Request $r){
       $validator = Validator::make($r->all(),[
-        'kategori'
+        'kategori' => 'required'
       ]);
 
       if (!$validator->fails()) {
@@ -44,7 +44,7 @@ class RangkingController extends Controller
 
     public function updateKategori(Request $r, $id_kategori){
       $validator = Validator::make($r->all(),[
-        'kategori'
+        'kategori' => 'required'
       ]);
 
       if (!$validator->fails()) {

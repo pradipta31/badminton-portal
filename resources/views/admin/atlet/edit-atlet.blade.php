@@ -38,6 +38,15 @@
             <form role="form">
               <div class="box-body">
                 <div class="form-group">
+                  <label>Klub</label>
+                  <select class="form-control" name="id_klub">
+                    <option value="0">-- Pilih Klub --</option>
+                    @foreach($clubs as $club)
+                      <option value="{{$club->id}}" {{$club->id == $atlet->id_klub ? 'selected' : ''}}>{{$club->nama_klub}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
                   <label>Kode Atlet</label>
                   <input type="text" class="form-control" placeholder="Kode Atlet" name="kode_atlet" value="{{$atlet->kode_atlet}}">
                 </div>
@@ -58,14 +67,6 @@
                       <input type="date" class="form-control" name="tgl_lahir" value="{{$atlet->tgl_lahir}}">
                     </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label>Klub</label>
-                  <input type="text" class="form-control" placeholder="Klub" name="klub" value="{{$atlet->klub}}">
-                </div>
-                <div class="form-group">
-                  <label>Cabang</label>
-                  <input type="text" class="form-control" placeholder="Cabang" name="cabang" value="{{$atlet->cabang}}">
                 </div>
                 <div class="form-group">
                   <label>Foto Atlet</label>

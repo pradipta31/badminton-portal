@@ -34,6 +34,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::put('berita/{id_berita}/edit-berita', 'BeritaController@updateBerita');
   Route::delete('berita/{id_berita}', 'BeritaController@deleteBerita');
 
+  // Route untuk Klub
+  Route::get('klub/data-klub', 'ClubController@getClub');
+  Route::post('klub/tambah-klub', 'ClubController@simpanClub');
+  Route::put('klub/{id_klub}', 'ClubController@updateClub');
+  Route::delete('klub/{id_klub}', 'ClubController@deleteClub');
+
   // Route untuk Atlet
   Route::get('atlet/tambah-atlet', 'AtletController@tambahAtlet');
   Route::post('atlet/tambah-atlet', 'AtletController@simpanAtlet');

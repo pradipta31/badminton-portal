@@ -63,9 +63,9 @@
                     <td>{{$no++}}</td>
                     <td>{{$atlet->kode_atlet}}</td>
                     <td>{{$atlet->nama}}</td>
-                    <td>{{$atlet->tempat_lahir}}, {{$atlet->tgl_lahir}}</td>
-                    <td>{{$atlet->klub}}</td>
-                    <td>{{$atlet->cabang}}</td>
+                    <td>{{$atlet->tempat_lahir}}, {{date('d-m-Y', strtotime($atlet->tgl_lahir))}}</td>
+                    <td>{{$atlet->club->nama_klub}}</td>
+                    <td>{{$atlet->club->alamat}}</td>
                     <td>
                       @if($atlet->status == 'aktif')
                         <span class="label label-success">Aktif</span>

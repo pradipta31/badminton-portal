@@ -1,5 +1,8 @@
 <div class="row-fluid">
-  <div class="span12">
+  <div class="span2">
+
+  </div>
+  <div class="span8">
     <div class="widget-box">
       <style>
         /* Make the image fully responsive */
@@ -43,6 +46,9 @@
         </a>
       </div>
     </div>
+  </div>
+  <div class="span2">
+
   </div>
 </div>
 <hr>

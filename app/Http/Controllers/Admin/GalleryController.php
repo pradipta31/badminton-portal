@@ -30,7 +30,7 @@ class GalleryController extends Controller
           $gambar = $r->file('gambar');
           $filename = time() . '.' . $gambar->getClientOriginalExtension();
           if ($r->file('gambar')->isValid()) {
-            Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/gallery/'.$filename));
+            Image::make($gambar)->save(public_path('/backend/images/gallery/'.$filename));
             $gallery = Gallery::create([
                 'judul' => $r->judul,
                 'slug' => str_slug($r->judul),
@@ -67,7 +67,7 @@ class GalleryController extends Controller
         if ($r->hasFile('gambar')) {
           $gambar = $r->file('gambar');
           $filename = time() . '.' . $gambar->getClientOriginalExtension();
-          Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/gallery/'.$filename));
+          Image::make($gambar)->save(public_path('/backend/images/gallery/'.$filename));
           $gallery = Gallery::findOrFail($id_gallery)->update([
               'judul' => $r->judul,
               'slug' => str_slug($r->judul),
@@ -96,7 +96,7 @@ class GalleryController extends Controller
     public function getPhoto($id_gallery){
       $gallery = Gallery::where('id',$id_gallery)->first();
       $photos = DetailGallery::where('id_gallery', $id_gallery)->get();
-      return view('admin.gallery.tambah-gallery', compact('gallery','photos'));
+      return view('admin.gallery.tambah-foto', compact('gallery','photos'));
     }
 
     public function tambahPhoto(Request $r){

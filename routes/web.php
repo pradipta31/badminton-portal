@@ -16,6 +16,8 @@ Auth::routes();
 
 Route::group(['namespace' => 'Frontend'], function(){
   Route::get('/', 'HomeController@index');
+  Route::get('berita', 'BeritaController@semuaBerita');
+  Route::get('berita/{slug}', 'BeritaController@bacaBerita');
 });
 
 Route::get('login', function(){

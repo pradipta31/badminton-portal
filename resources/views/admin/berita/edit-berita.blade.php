@@ -51,7 +51,7 @@
             <div class="col-md-10 col-sm-10 col-xs-10">
               <div class="form-group">
                 <label for="">Cover</label>
-                <input type="file" name="gambar" id="" value="{{$berita->gambar}}">
+                <input type="file" name="gambar">
               </div>
             </div>
           </div>

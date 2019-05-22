@@ -1,8 +1,26 @@
+@extends('frontend.layouts.app')
+@section('css')
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+@endsection
+@section('title','Berita')
+@section('content')
+<style media="screen">
+  #header{
+    margin-top: 0;
+  }
+
+  #imgbox img{
+    margin-top: 100px;
+  }
+</style>
 <div class="row-fluid">
-  <div class="span12">
+  <div class="span9">
     <div class="widget-box">
       <div class="widget-title"><span class="icon"><i class="icon-file"></i></span>
-        <h5>Latest Posts</h5>
+        <h5>Semua Berita</h5>
       </div>
       <div class="widget-content nopadding">
         <ul class="recent-posts">
@@ -25,12 +43,15 @@
             </div>
           </div>
           @endforeach
-            {{$beritas->links()}}
+
           <li>
-            <a href="{{url('berita')}}" class="btn btn-primary btn-mini">Lihat Semua Berita</a>
+            {{$beritas->links()}}
           </li>
         </ul>
       </div>
     </div>
   </div>
+  @include('frontend.berita.photo')
 </div>
+
+@endsection

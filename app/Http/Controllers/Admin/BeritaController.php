@@ -31,7 +31,7 @@ class BeritaController extends Controller
             $gambar = $r->file('gambar');
             $filename = time() . '.' . $gambar->getClientOriginalExtension();
             if ($r->file('gambar')->isValid()) {
-                Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/berita/'.$filename));
+                Image::make($gambar)->save(public_path('/backend/images/berita/'.$filename));
                 $file = Berita::create([
                     'judul' => $r->judul ?? $uploadedFile->getClientOriginalName(),
                     'slug' => str_slug($r->judul),
@@ -53,7 +53,7 @@ class BeritaController extends Controller
             $gambar = $r->file('gambar');
             $filename = time() . '.' . $gambar->getClientOriginalExtension();
             if ($r->file('gambar')->isValid()) {
-                Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/berita/'.$filename));
+                Image::make($gambar)->save(public_path('/backend/images/berita/'.$filename));
                 $file = Berita::create([
                     'judul' => $r->judul ?? $uploadedFile->getClientOriginalName(),
                     'slug' => str_slug($r->judul),
@@ -104,12 +104,12 @@ class BeritaController extends Controller
             }elseif ($r->hasFile('gambar')){
                 $gambar = $r->file('gambar');
                 $filename = time() . '.' . $gambar->getClientOriginalExtension();
-                Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/berita/'.$filename));
+                Image::make($gambar)->save(public_path('/backend/images/berita/'.$filename));
                 $file = Berita::findOrFail($id_berita)->update([
                     'judul' => $r->judul,
                     'slug' => str_slug($r->judul),
                     'isi' => $r->isi,
-                    'file' => $filename,
+                    'gambar' => $filename,
                     'status' => 'published'
                 ]);
             }elseif($r->all() == 0){
@@ -129,12 +129,12 @@ class BeritaController extends Controller
             }elseif ($r->hasFile('gambar')){
                 $gambar = $r->file('gambar');
                 $filename = time() . '.' . $gambar->getClientOriginalExtension();
-                Image::make($gambar)->resize(365, 280)->save(public_path('/backend/images/berita/'.$filename));
+                Image::make($gambar)->save(public_path('/backend/images/berita/'.$filename));
                 $file = Berita::findOrFail($id_berita)->update([
                     'judul' => $r->judul,
                     'slug' => str_slug($r->judul),
                     'isi' => $r->isi,
-                    'file' => $filename,
+                    'gambar' => $filename,
                     'status' => 'archived'
                 ]);
             }

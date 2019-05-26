@@ -18,6 +18,11 @@ Route::group(['namespace' => 'Frontend'], function(){
   Route::get('/', 'HomeController@index');
   Route::get('berita', 'BeritaController@semuaBerita');
   Route::get('berita/{slug}', 'BeritaController@bacaBerita');
+  Route::get('kejuaraan', 'KejuaraanController@indexKejuaraan');
+  Route::get('kejuaraan/{id}', 'KejuaraanController@detailKejuaraan');
+  Route::get('gallery', 'GalleryController@getGallery');
+  Route::get('gallery/detail/{id}', 'GalleryController@detailGallery');
+  Route::get('pemain', 'PemainController@getPemain');
 });
 
 Route::get('login', function(){

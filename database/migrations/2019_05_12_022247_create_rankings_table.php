@@ -17,6 +17,7 @@ class CreateRankingsTable extends Migration
           $table->bigIncrements('id');
           $table->unsignedBigInteger('id_kategori');
           $table->unsignedBigInteger('id_atlet');
+          $table->unsignedBigInteger('id_pas_atlet')->nullable();
           $table->integer('ranking');
           $table->integer('total_main');
           $table->string('total_poin');
@@ -25,6 +26,8 @@ class CreateRankingsTable extends Migration
           $table->foreign('id_kategori')->references('id')->on('categories')
           ->onDelete('cascade')->onUpdate('cascade');
           $table->foreign('id_atlet')->references('id')->on('atlets')
+          ->onDelete('cascade')->onUpdate('cascade');
+          $table->foreign('id_pas_atlet')->references('id')->on('atlets')
           ->onDelete('cascade')->onUpdate('cascade');
         });
     }

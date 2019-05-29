@@ -38,13 +38,20 @@
           {{ csrf_field() }}
           <div class="box-body">
             <div class="form-group">
+              <label>Kode Kategori</label>
+              <select class="form-control" name="kode_kategori">
+                <option value="1">Tunggal</option>
+                <option value="2">Ganda</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label>Kategori</label>
               <input type="text" class="form-control" placeholder="Kategori" name="kategori">
             </div>
             <div class="form-group">
               <label>Deskripsi</label>
               <textarea name="deskripsi" rows="3" cols="80" class="form-control"></textarea>
-              <small>Note: Kategori dapat dikosongkan</small>
+              <small>Note: Deskripsi dapat dikosongkan</small>
             </div>
           </div>
           <div class="box-footer">
@@ -64,6 +71,7 @@
               <thead>
                 <tr>
                   <th>No</th>
+                  <th>Kode Kategori</th>
                   <th>Kategori</th>
                   <th>Deskripsi</th>
                   <th>Opsi</th>
@@ -76,6 +84,13 @@
                 @foreach($categories as $kategori)
                   <tr>
                     <td>{{$no++}}</td>
+                    <td>
+                      @if($kategori->kode_kategori == '1')
+                        Tunggal
+                      @else
+                        Ganda
+                      @endif
+                    </td>
                     <td>{{$kategori->kategori}}</td>
                     <td>{{$kategori->deskripsi}}</td>
                     <td>
@@ -97,12 +112,19 @@
                           {{ csrf_field() }}
                           <input type="hidden" name="_method" value="put">
                           <div class="modal-body">
+                            <div class="form-group">
+                              <label class="col-form-label">Kode Kategori</label>
+                              <select class="form-control" name="kode_kategori" value="{{$kategori->kode_kategori}}">
+                                <option value="1" {{$kategori->kode_kategori == '1' ? 'selected' : ''}}>Tunggal</option>
+                                <option value="2" {{$kategori->kode_kategori == '2' ? 'selected' : ''}}>Ganda</option>
+                              </select>
+                            </div>
                               <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Kategori</label>
+                                <label class="col-form-label">Kategori</label>
                                 <input type="text" class="form-control" name="kategori" value="{{$kategori->kategori}}">
                               </div>
                               <div class="form-group">
-                                <label for="message-text" class="col-form-label">Deskripsi</label>
+                                <label class="col-form-label">Deskripsi</label>
                                 <textarea class="form-control" name="deskripsi">{{$kategori->deskripsi}}</textarea>
                               </div>
                           </div>

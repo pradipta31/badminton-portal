@@ -20,4 +20,8 @@ class Atlet extends Model
     public function club(){
       return $this->belongsTo('App\Club', 'id_klub');
     }
+
+    public function ranking(){
+      return $this->hasOne('App\Ranking');
+    }
 }

@@ -1,4 +1,7 @@
 @extends('admin.layouts.master',['activeMenu' => 'kategori-rangnking'])
+@section('css')
+  <link rel="stylesheet" href="{{asset('backend/bower_components/select2/dist/css/select2.min.css')}}">
+@endsection
 @section('title','Tambah Rangking')
 
 @section('content')
@@ -26,7 +29,7 @@
             {{Session::get('error')}}
         </div>
     @endif
-    <form class="" action="{{url('admin/atlet/tambah-atlet')}}" method="post" enctype="multipart/form-data">
+    <form class="" action="{{url('admin/rangking/tambah-rangking')}}" method="post" enctype="multipart/form-data">
       {{csrf_field()}}
       <div class="row">
         <div class="col-md-6">
@@ -37,43 +40,50 @@
             <form role="form">
               <div class="box-body">
                 <div class="form-group">
+                  <label>Jenis Kategori</label>
+                  <select class="form-control" name="kode_kategori" id="kode_kategori">
+                    <option value="0">-- Pilih Jenis Kategori --</option>
+                    <option value="1">Tunggal</option>
+                    <option value="2">Ganda</option>
+                  </select>
+                </div>
+                <div class="form-group">
                   <label>Kategori</label>
                   <select class="form-control" name="id_kategori">
+                      <option value="0">-- Pilih Kategori --</option>
                     @foreach($categories as $kategori)
                       <option value="{{$kategori->id}}">{{$kategori->kategori}}</option>
                     @endforeach
                   </select>
                 </div>
-                <div class="form-group">
-                  <label>Nama Atlet</label>
-                  <input type="text" class="form-control" placeholder="Nama Atlet" name="nama">
+                <div class="form-group" id="atlet_tunggal">
+                  <label>Pilih Atlet</label>
+                  <select class="form-control select2" name="id_atlet" id="a_tunggal" style="width: 100%">
+                    @foreach($atlets as $atlet)
+                      <option value="{{$atlet->id}}">{{$atlet->nama}}</option>
+                    @endforeach
+                  </select>
                 </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Tempat Lahir</label>
-                      <input type="text" class="form-control" placeholder="Tempat Lahir" name="tempat_lahir">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Tanggal Lahir</label>
-                      <input type="date" class="form-control" name="tgl_lahir">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Klub</label>
-                  <input type="text" class="form-control" placeholder="Klub" name="klub">
+                <div class="form-group" id="atlet_ganda">
+                  <label>Pilih Pasangan Atlet</label>
+                  <select class="form-control select2" name="id_pas_atlet" id="a_ganda" style="width: 100%">
+                    @foreach($atlets as $atlet)
+                      <option value="{{$atlet->id}}">{{$atlet->nama}}</option>
+                    @endforeach
+                  </select>
+                  <span id="message" class="label label-danger"></span>
                 </div>
                 <div class="form-group">
-                  <label>Cabang</label>
-                  <input type="text" class="form-control" placeholder="Cabang" name="cabang">
+                  <label>Rangking</label>
+                  <input type="number" class="form-control" placeholder="Rangking" name="ranking">
                 </div>
                 <div class="form-group">
-                  <label>Foto Atlet</label>
-                  <input type="file" class="form-control" name="foto">
-                  <small>Note: Kosongkan jika tidak ada foto atlet</small>
+                  <label>Total Main</label>
+                  <input type="number" class="form-control" placeholder="Total Main" name="total_main">
+                </div>
+                <div class="form-group">
+                  <label>Total Poin</label>
+                  <input type="number" class="form-control" placeholder="Total Poin" name="total_poin">
                 </div>
               </div>
               <div class="box-footer">
@@ -87,4 +97,34 @@
   </section>
 @endsection
 @section('js')
+<script src="{{asset('backend/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+<script type="text/javascript">
+  $('#kode_kategori').on('change',function(){
+    var valueSelected = this.value;
+    $('#atlet_ganda').hide();
+    if(valueSelected == 0){
+      $('#atlet_tunggal').hide();
+    }else if(valueSelected == 1){
+      console.log(valueSelected);
+      $('#atlet_tunggal').show();
+    }else if(valueSelected == 2){
+      console.log(valueSelected);
+      $('#atlet_tunggal,#atlet_ganda').show();
+    }
+  });
+
+  $('#a_tunggal, #a_ganda').on('change', function(){
+    $('#message').hide();
+    if ($('#a_tunggal').val() == $('#a_ganda').val()) {
+      $('#message').html('Atlet tidak boleh sama!');
+      $('#message').show();
+    }else{
+      $('#message').hide();
+    }
+  });
+
+  $(function(){
+    $('.select2').select2();
+  });
+</script>
 @endsection

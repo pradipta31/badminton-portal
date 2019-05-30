@@ -63,7 +63,7 @@
         <ul class="treeview-menu">
           <li><a href="{{url('admin/kategori')}}"><i class="fa fa-circle-o"></i> Daftar Kategori</a></li>
           <li><a href="{{url('admin/rangking/tambah-rangking')}}"><i class="fa fa-circle-o"></i> Tambah Rangking</a></li>
-          <li><a href="{{url('admin/rangking/data-rangking')}}"><i class="fa fa-circle-o"></i> Rangking</a></li>
+          <li><a href="{{url('admin/rangking/daftar-rangking')}}"><i class="fa fa-circle-o"></i> Rangking</a></li>
         </ul>
       </li>
       <li class="treeview {{$activeMenu == 'gallery' ? 'active' : ''}}">

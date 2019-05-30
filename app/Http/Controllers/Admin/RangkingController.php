@@ -130,7 +130,9 @@ class RangkingController extends Controller
     }
 
     public function indexRanking(){
+      $categories = Category::all();
+      $atlets = Atlet::where('status','=','aktif')->get();
       $rankings = Ranking::orderBy('id_kategori','asc')->get();
-      return view('admin.rangking.data-rangking',compact('rankings'));
+      return view('admin.rangking.data-rangking',compact('rankings','categories','atlets'));
     }
 }

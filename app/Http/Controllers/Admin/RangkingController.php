@@ -87,11 +87,30 @@ class RangkingController extends Controller
       if (!$validator->fails()) {
         $check = Ranking::where('id_atlet','=',$r->id_atlet)->first();
         $check_atlet = Atlet::where('id','=',$r->id_atlet)->first();
-        if ($check == null) {
-          if ($r->kode_kategori == '1') {
-            $atlet_tunggal = Ranking::create([
+        if ($r->kode_kategori == '1') {
+          $atlet_tunggal = Ranking::create([
+            'id_kategori' => $r->id_kategori,
+            'id_atlet' => $r->id_atlet,
+            'ranking' => $r->ranking,
+            'total_main' => $r->total_main,
+            'total_poin' => $r->total_poin
+          ]);
+          Session::flash('success', 'Ranking baru berhasil didaftarkan !');
+          return redirect('admin/rangking/daftar-rangking');
+        }else{
+          $check_pas = Ranking::where('id_pas_atlet','=',$r->id_pas_atlet)
+          ->first();
+          $check_at = Ranking::where('id_atlet','=',$r->id_atlet)
+          ->first();
+          $check_p = Ranking::where('id_atlet','=',$r->id_pas_atlet)
+          ->first();
+          $check_a = Ranking::where('id_pas_atlet','=',$r->id_atlet)
+          ->first();
+          if ($check_pas != $check_at && $check_p != $check_a) {
+            $atlet_ganda = Ranking::create([
               'id_kategori' => $r->id_kategori,
               'id_atlet' => $r->id_atlet,
+              'id_pas_atlet' => $r->id_pas_atlet,
               'ranking' => $r->ranking,
               'total_main' => $r->total_main,
               'total_poin' => $r->total_poin
@@ -99,29 +118,9 @@ class RangkingController extends Controller
             Session::flash('success', 'Ranking baru berhasil didaftarkan !');
             return redirect('admin/rangking/daftar-rangking');
           }else{
-            $check_pas = Ranking::where('id_atlet','=',$r->id_pas_atlet)
-            ->where('id_pas_atlet','=',$r->id_atlet)
-            ->where('id_pas_atlet', '=', $r->id_pas_atlet)
-            ->first();
-            if ($check_pas == null) {
-              $atlet_ganda = Ranking::create([
-                'id_kategori' => $r->id_kategori,
-                'id_atlet' => $r->id_atlet,
-                'id_pas_atlet' => $r->id_pas_atlet,
-                'ranking' => $r->ranking,
-                'total_main' => $r->total_main,
-                'total_poin' => $r->total_poin
-              ]);
-              Session::flash('success', 'Ranking baru berhasil didaftarkan !');
-              return redirect('admin/rangking/daftar-rangking');
-            }else{
-              Session::flash('error', 'Atlet '.$check_atlet->nama.' sudah terdaftar !');
-              return redirect()->back()->withInput();
-            }
+            Session::flash('error', 'Atlet '.$check_atlet->nama.' sudah terdaftar pada ganda !');
+            return redirect()->back()->withInput();
           }
-        }else{
-          Session::flash('error', 'Atlet '.$check_atlet->nama.' sudah terdaftar !');
-          return redirect()->back()->withInput();
         }
       }else{
         Session::flash('error', $validator->messages()->first());
@@ -134,5 +133,32 @@ class RangkingController extends Controller
       $atlets = Atlet::where('status','=','aktif')->get();
       $rankings = Ranking::orderBy('id_kategori','asc')->get();
       return view('admin.rangking.data-rangking',compact('rankings','categories','atlets'));
+    }
+
+    public function updateRanking(Request $r, $id_rangking){
+      $validator = Validator::make($r->all(), [
+        'ranking' => 'required',
+        'total_main' => 'required',
+        'total_poin' => 'required'
+      ]);
+
+      if (!$validator->fails()) {
+        $atlets = Ranking::where('id',$id_rangking)->update([
+          'ranking' => $r->ranking,
+          'total_main' => $r->total_main,
+          'total_poin' => $r->total_poin
+        ]);
+        Session::flash('success', 'Ranking yang terpilih berhasil diubah !');
+        return redirect('admin/rangking/daftar-rangking');
+      }else{
+        Session::flash('error', $validator->messages()->first());
+        return redirect()->back()->withInput();
+      }
+    }
+
+    public function deleteRanking($id_rangking){
+      $ranking = Ranking::where('id',$id_rangking)->delete();
+      Session::flash('success', 'Data rangking berhasil dihapus!');
+      return redirect('admin/rangking/daftar-rangking');
     }
 }

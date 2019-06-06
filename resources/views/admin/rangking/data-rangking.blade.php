@@ -90,52 +90,55 @@
                         </div>
                         <form action="{{url('admin/rangking/'.$rangking->id)}}" method="post" enctype="multipart/form-data">
                           {{ csrf_field() }}
+                          <input type="hidden" name="_method" value="put">
                           <div class="modal-body">
-                            <!-- <div class="form-group">
-                              <label>Jenis Kategori</label>
-                              <select class="form-control" name="kode_kategori" id="kode_kategori">
-                                <option value="0"> Pilih Jenis Kategori </option>
-                                <option value="1">Tunggal</option>
-                                <option value="2">Ganda</option>
-                              </select>
-                            </div> -->
                             <div class="form-group">
                               <label>Kategori</label>
-                              <select class="form-control" name="id_kategori">
+                              <select class="form-control" name="id_kategori" disabled>
                                   <option value="0">-- Pilih Kategori --</option>
                                 @foreach($categories as $kategori)
-                                  <option value="{{$kategori->id}}">{{$kategori->kategori}}</option>
+                                  <option value="{{$kategori->id}}" {{$kategori->id == $rangking->id_kategori ? 'selected' : ''}}>{{$kategori->kategori}}</option>
                                 @endforeach
                               </select>
                             </div>
-                            <div class="form-group" id="atlet_tunggal">
-                              <label>Pilih Atlet</label>
-                              <select class="form-control select2" name="id_atlet" id="a_tunggal" style="width: 100%">
-                                @foreach($atlets as $atlet)
-                                  <option value="{{$atlet->id}}">{{$atlet->nama}}</option>
-                                @endforeach
-                              </select>
-                            </div>
-                            <div class="form-group" id="atlet_ganda">
-                              <label>Pilih Pasangan Atlet</label>
-                              <select class="form-control select2" name="id_pas_atlet" id="a_ganda" style="width: 100%">
-                                @foreach($atlets as $atlet)
-                                  <option value="{{$atlet->id}}">{{$atlet->nama}}</option>
-                                @endforeach
-                              </select>
-                              <span id="message" class="label label-danger"></span>
-                            </div>
+                            @if($rangking->id_pas_atlet != null)
+                              <div class="form-group" id="atlet_tunggal">
+                                <label>Pilih Atlet</label>
+                                <select class="form-control" name="id_atlet" disabled>
+                                  @foreach($atlets as $atlet)
+                                    <option value="{{$atlet->id}}" {{$atlet->id == $rangking->id_atlet ? 'selected' : ''}}>{{$atlet->nama}}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                              <div class="form-group" id="atlet_ganda">
+                                <label>Pilih Pasangan Atlet</label>
+                                <select class="form-control" name="id_pas_atlet" disabled>
+                                  @foreach($atlets as $atlet)
+                                    <option value="{{$atlet->id}}" {{$atlet->id == $rangking->id_pas_atlet ? 'selected' : ''}}>{{$atlet->nama}}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                            @else
+                              <div class="form-group" id="atlet_tunggal">
+                                <label>Pilih Atlet</label>
+                                <select class="form-control" name="id_atlet" disabled>
+                                  @foreach($atlets as $atlet)
+                                    <option value="{{$atlet->id}}" {{$atlet->id == $rangking->id_atlet ? 'selected' : ''}}>{{$atlet->nama}}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                            @endif
                             <div class="form-group">
                               <label>Rangking</label>
-                              <input type="number" class="form-control" placeholder="Rangking" name="ranking">
+                              <input type="number" class="form-control" placeholder="Rangking" name="ranking" value="{{$rangking->ranking}}">
                             </div>
                             <div class="form-group">
                               <label>Total Main</label>
-                              <input type="number" class="form-control" placeholder="Total Main" name="total_main">
+                              <input type="number" class="form-control" placeholder="Total Main" name="total_main" value="{{$rangking->total_main}}">
                             </div>
                             <div class="form-group">
                               <label>Total Poin</label>
-                              <input type="number" class="form-control" placeholder="Total Poin" name="total_poin">
+                              <input type="number" class="form-control" placeholder="Total Poin" name="total_poin" value="{{$rangking->total_poin}}">
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -170,43 +173,15 @@
         $('#editRangking').modal('show');
     }
     function deleteRangking(id_rangking){
-        bootbox.confirm("Anda yakin ingin menghapus kejuaraan ini secara permanen ?", function(result){
+        bootbox.confirm("Anda yakin ingin menghapus rangking ini secara permanen ?", function(result){
             if (result) {
-                $('#formDelete').attr('action', '{{url('admin/kejuaraan')}}/'+id_rangking);
+                $('#formDelete').attr('action', '{{url('admin/rangking')}}/'+id_rangking);
                 $('#formDelete').submit();
             }
         });
     }
     $(function(){
       $('#tabelKejuaraan').dataTable()
-    });
-
-    // $('#kode_kategori').on('change',function(){
-    //   var valueSelected = this.value;
-    //   $('#atlet_ganda').hide();
-    //   if(valueSelected == 0){
-    //     $('#atlet_tunggal').hide();
-    //   }else if(valueSelected == 1){
-    //     console.log(valueSelected);
-    //     $('#atlet_tunggal').show();
-    //   }else if(valueSelected == 2){
-    //     console.log(valueSelected);
-    //     $('#atlet_tunggal,#atlet_ganda').show();
-    //   }
-    // });
-    //
-    // $('#a_tunggal, #a_ganda').on('change', function(){
-    //   $('#message').hide();
-    //   if ($('#a_tunggal').val() == $('#a_ganda').val()) {
-    //     $('#message').html('Atlet tidak boleh sama!');
-    //     $('#message').show();
-    //   }else{
-    //     $('#message').hide();
-    //   }
-    // });
-
-    $(function(){
-      $('.select2').select2();
     });
   </script>
 @endsection

@@ -1,4 +1,4 @@
-@extends('admin.layouts.master',['activeMenu' => 'kategori-rangnking'])
+@extends('admin.layouts.master',['activeMenu' => 'kategori-rangking'])
 @section('css')
   <link rel="stylesheet" href="{{asset('backend/bower_components/select2/dist/css/select2.min.css')}}">
 @endsection

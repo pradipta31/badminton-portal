@@ -63,6 +63,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function(){
   Route::get('rangking/tambah-rangking', 'RangkingController@tambahRangking');
   Route::post('rangking/tambah-rangking', 'RangkingController@simpanRangking');
   Route::get('rangking/daftar-rangking','RangkingController@indexRanking');
+  Route::put('rangking/{id_rangking}', 'RangkingController@updateRanking');
+  Route::delete('rangking/{id_rangking}', 'RangkingController@deleteRanking');
 
   // Route Kejuaraan
   Route::get('kejuaraan/tambah-kejuaraan', 'KejuaraanController@tambahKejuaraan');

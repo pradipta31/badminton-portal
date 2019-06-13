@@ -26,7 +26,7 @@
       </div>
   @endif
   <div class="login-box-body">
-    <p class="login-box-msg">Silahkan login terlebih dahulu</p>
+    <p class="login-box-msg">Login dulu sayang :*</p>
     <form action="{{url('login')}}" method="post">
       {{csrf_field()}}
       <div class="form-group has-feedback">

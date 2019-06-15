@@ -14,7 +14,7 @@
   </section>
   <section class="content">
     <div class="row">
-      <!-- <div class="col-lg-3 col-xs-6">
+      <div class="col-lg-3 col-xs-6">
         <div class="small-box bg-aqua">
           <div class="inner">
             <h3>150</h3>
@@ -61,14 +61,7 @@
           </div>
           <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
-      </div> -->
-      <h1>
-        DINAR I MISS YOU TOO
-        <br>
-        SILAHKAN KM MARAH"IN AKU
-        <br>
-        MAAF KUOTA MU TERBUANG SIA-SIA GARA-GARA AKU
-      </h1>
+      </div>
     </div>
   </section>
 @endsection

@@ -128,8 +128,10 @@ class GalleryController extends Controller
       if (!$validator->fails()) {
         $gambar = $r->file('gambar');
         $filename = time() . '.' . $gambar->getClientOriginalExtension();
+        $find_img = DetailGallery::where('id',$id_foto)->first();
+        unlink(public_path('/backend/images/photo/') . $find_img->gambar);
         Image::make($gambar)->save(public_path('/backend/images/photo/'.$filename));
-        $gallery = DetailGallery::findOrFail($id_foto)->update([
+        $gallery = DetailGallery::where('id',$id_foto)->update([
             'gambar' => $filename
         ]);
         Session::flash('success', 'Photo gallery berhasil diubah !');

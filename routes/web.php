@@ -23,6 +23,8 @@ Route::group(['namespace' => 'Frontend'], function(){
   Route::get('gallery', 'GalleryController@getGallery');
   Route::get('gallery/detail/{id}', 'GalleryController@detailGallery');
   Route::get('pemain', 'PemainController@getPemain');
+  Route::get('rangking', 'RangkingController@index');
+  Route::get('rangking/cari', 'RangkingController@cari');
 });
 
 Route::get('login', function(){

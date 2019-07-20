@@ -34,9 +34,9 @@
             <div class="control-group">
                 <label class="control-label">Pilih Kategori</label>
                 <div class="controls">
-                  <select name="id_kategori">
+                  <select name="id_kategori" value="{{$kategori->id}}">
                     @foreach($categories as $category)
-                      <option value="{{$category->id}}">{{$category->kategori}}</option>
+                      <option value="{{$category->id}}" {{$category->id == $kategori->id ? 'selected' : ''}}>{{$category->kategori}}</option>
                     @endforeach
                   </select>
                 </div>
@@ -57,17 +57,34 @@
                   <th>Rangking</th>
                   <th>Kode Atlet</th>
                   <th>Nama</th>
+                  @if($kategori->kode_kategori == 2)
+                  <th>Pasangan</th>
+                  @else
+
+                  @endif
                   <th>Klub</th>
                   <th>Total Main</th>
                   <th>Total Poin</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($rangkings as $rangking)
+                @foreach($results as $rangking)
                   <tr>
                     <td><center>{{$rangking->ranking}}</center></td>
-                    <td>{{$rangking->atlet->kode_atlet}}</td>
+                    <td>
+                      {{$rangking->atlet->kode_atlet}}
+                      @if($kategori->kode_kategori == 2)
+                      / {{$rangking->atletP->kode_atlet}}
+                      @else
+
+                      @endif
+                    </td>
                     <td>{{$rangking->atlet->nama}}</td>
+                    @if($kategori->kode_kategori == 2)
+                    <td>{{$rangking->atletP->nama}}</td>
+                    @else
+                    
+                    @endif
                     <td>{{$rangking->atlet->club->nama_klub}}</td>
                     <td>{{$rangking->total_main}}</td>
                     <td>{{$rangking->total_poin}}</td>

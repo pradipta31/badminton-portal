@@ -44,7 +44,7 @@
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Admin</th>
+                  <!-- <th>Admin</th> -->
                   <th>Judul</th>
                   <th>Cover</th>
                   <th>Status</th>
@@ -60,7 +60,7 @@
                 @foreach($galleries as $gallery)
                   <tr>
                     <td>{{$no++}}</td>
-                    <td>{{$gallery->user->nama}}</td>
+                    <!-- <td>{{$gallery->user->nama}}</td> -->
                     <td>{{$gallery->judul}}</td>
                     <td>
                       <button class="btn btn-primary btn-sm" onClick="showImage('{{$gallery->gambar}}');">
